@@ -10,8 +10,8 @@ curl -sf ${RANCHER_BASEURL}/self/service/metadata/plugins > ${PLUGINS_TXT}
 
 if [ -f "$PLUGINS_TXT" ]; then
   for plugin in $(<"${PLUGINS_TXT}"); do
-    echo "Installing $plugin"
-    /usr/share/kibana/bin/kibana-plugin install $plugin
+    echo "Installing $(basename ${plugin})"
+    /usr/share/kibana/bin/kibana-plugin install $plugin || true
   done
 fi
 
