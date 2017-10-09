@@ -12,7 +12,7 @@ if [ -n "$CUSTOM_KIBANA_LOOK_AND_FEEL" ]; then
   CUSTOM_KIBANA="/tmp/kibana.tar.gz"
   curl -Lsf ${CUSTOM_KIBANA_LOOK_AND_FEEL} > ${CUSTOM_KIBANA}
   echo "Curl ${CUSTOM_KIBANA_LOOK_AND_FEEL} finish ..."
-  tar -xvzf ${CUSTOM_KIBANA} /usr/share/kibana/
+  tar -xvzf ${CUSTOM_KIBANA} -C /usr/share/kibana/
   echo "untar  ${CUSTOM_KIBANA} finish ..."
   rm -rf /usr/share/kibana/optimize/bundles
   echo "clean bundles finish ..."
