@@ -16,8 +16,8 @@ if [ -f "$PLUGINS_TXT" ]; then
 fi
 
 if [ -n "$CUSTOM_KIBANA_LOOK_AND_FEEL" ]; then
-  CUSTOM_KIBANA= "/tmp/kibana.tar.gz";
-  curl -sf ${$CUSTOM_KIBANA_LOOK_AND_FEEL} > ${CUSTOM_KIBANA}
+  CUSTOM_KIBANA="/tmp/kibana.tar.gz"
+  curl -Lsf ${$CUSTOM_KIBANA_LOOK_AND_FEEL} > ${CUSTOM_KIBANA}
   echo "Curl ${$CUSTOM_KIBANA_LOOK_AND_FEEL} finish ..."
   tar -xvzf ${CUSTOM_KIBANA} /usr/share/kibana/
   echo "untar  ${CUSTOM_KIBANA} finish ..."
