@@ -10,8 +10,8 @@ curl -sf ${RANCHER_BASEURL}/self/service/metadata/plugins > ${PLUGINS_TXT}
 
 if [ -n "$CUSTOM_KIBANA_LOOK_AND_FEEL" ]; then
   CUSTOM_KIBANA="/tmp/kibana.tar.gz"
-  curl -Lsf ${$CUSTOM_KIBANA_LOOK_AND_FEEL} > ${CUSTOM_KIBANA}
-  echo "Curl ${$CUSTOM_KIBANA_LOOK_AND_FEEL} finish ..."
+  curl -Lsf ${CUSTOM_KIBANA_LOOK_AND_FEEL} > ${CUSTOM_KIBANA}
+  echo "Curl ${CUSTOM_KIBANA_LOOK_AND_FEEL} finish ..."
   tar -xvzf ${CUSTOM_KIBANA} /usr/share/kibana/
   echo "untar  ${CUSTOM_KIBANA} finish ..."
   rm -rf /usr/share/kibana/optimize/bundles
