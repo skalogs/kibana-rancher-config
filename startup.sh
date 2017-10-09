@@ -15,4 +15,14 @@ if [ -f "$PLUGINS_TXT" ]; then
   done
 fi
 
+if [ -n "$CUSTOM_KIBANA_LOOK_AND_FEEL" ]; then
+  CUSTOM_KIBANA= "/tmp/custom/kibana.tar.gz";
+  curl -sf ${$CUSTOM_KIBANA_LOOK_AND_FEEL} > ${CUSTOM_KIBANA}
+  echo "Curl ${$CUSTOM_KIBANA_LOOK_AND_FEEL} finish ..."
+  tar -xvzf ${CUSTOM_KIBANA} /usr/share/kibana/
+  echo "untar  ${CUSTOM_KIBANA} finish ..."
+  rm -rf /usr/share/kibana/optimize/bundles
+  echo "clean bundles finish ..."
+fi
+
 /usr/local/bin/kibana-docker
