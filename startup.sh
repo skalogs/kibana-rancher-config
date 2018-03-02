@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+#set -e
 
 RANCHER_BASEURL="rancher-metadata.rancher.internal/latest"
 
