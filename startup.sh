@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#set -e
+set -e
 
 RANCHER_BASEURL="rancher-metadata.rancher.internal/latest"
 
@@ -32,7 +32,5 @@ if [ -f "$PLUGINS_TXT" ]; then
     /usr/share/kibana/bin/kibana-plugin install $plugin || true
   done
 fi
-
-
 
 /usr/local/bin/kibana-docker
