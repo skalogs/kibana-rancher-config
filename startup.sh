@@ -9,7 +9,7 @@ then
   echo "Installing custom Kibana config"
   mkdir -p /usr/share/kibana/config
   # kibana.yml
-  curl -sf ${RANCHER_BASEURL}/self/service/metadata/kibana-config > /usr/share/kibana/config/kibana.yml
+  curl -sf ${RANCHER_BASEURL}/self/service/metadata/kibana-config > /usr/share/kibana/config/kibana.yml.new
 fi
 
 echo "Installing plugins..."
