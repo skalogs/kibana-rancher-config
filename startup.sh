@@ -3,18 +3,12 @@
 
 RANCHER_BASEURL="rancher-metadata.rancher.internal/latest"
 
-echo "Récupération de la configuration Kibana..."
 response=$(curl --write-out %{http_code} --silent --output /dev/null http://${RANCHER_BASEURL}/self/service/metadata/kibana-config)
-echo "Réponse: "
-echo $response
 if [ "$response" -eq 200 ]
 then
   echo "Installing custom Kibana config"
-  echo "Directory creating"
   mkdir -p /usr/share/kibana/config
-  echo "Deleting old conf."
   rm -f /usr/share/kibana/config/kibana.yml
-  echo "Creating new conf"
   curl -sf ${RANCHER_BASEURL}/self/service/metadata/kibana-config > /usr/share/kibana/config/kibana.yml
 fi
 
