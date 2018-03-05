@@ -10,8 +10,11 @@ echo $response
 if [ "$response" -eq 200 ]
 then
   echo "Installing custom Kibana config"
+  echo "Directory creating"
   mkdir -p /usr/share/kibana/config
-  rm /usr/share/kibana/config/kibana.yml
+  echo "Deleting old conf."
+  rm -f /usr/share/kibana/config/kibana.yml
+  echo "Creating new conf"
   curl -sf ${RANCHER_BASEURL}/self/service/metadata/kibana-config > /usr/share/kibana/config/kibana.yml
 fi
 
