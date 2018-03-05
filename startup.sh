@@ -3,7 +3,10 @@
 
 RANCHER_BASEURL="rancher-metadata.rancher.internal/latest"
 
+echo "Récupération de la configuration Kibana..."
 response=$(curl --write-out %{http_code} --silent --output /dev/null http://${RANCHER_BASEURL}/self/service/metadata/kibana-config)
+echo "Réponse: "
+echo $response
 if [ "$response" -eq 200 ]
 then
   echo "Installing custom Kibana config"
