@@ -12,11 +12,15 @@ then
   curl -sf ${RANCHER_BASEURL}/self/service/metadata/kibana-config > /usr/share/kibana/config/kibana.yml
 fi
 
-echo "Installing plugins..."
-PLUGINS_TXT="/tmp/plugins.txt"
-curl -sf ${RANCHER_BASEURL}/self/service/metadata/plugins > ${PLUGINS_TXT}
 
-if [ -f "$PLUGINS_TXT" ]; then
+response=$(curl --write-out %{http_code} --silent --output /dev/null ${RANCHER_BASEURL}/self/service/metadata/plugins)
+if [ "$response" -eq 200 ]
+then
+  echo "Installing plugins..."
+
+  PLUGINS_TXT="/tmp/plugins.txt"
+  curl -sf ${RANCHER_BASEURL}/self/service/metadata/plugins > ${PLUGINS_TXT}
+
   for plugin in $(<"${PLUGINS_TXT}"); do
     echo "Installing $(basename ${plugin})"
     /usr/share/kibana/bin/kibana-plugin install $plugin || true
